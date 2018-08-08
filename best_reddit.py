@@ -1,7 +1,8 @@
-#!/usr/bin/env python3
 import requests
 import sqlite3 as db
+import os
 
+dirname = os.path.dirname(os.path.realpath(__file__))
 
 class BestReddit(object):
 
@@ -15,7 +16,7 @@ class BestReddit(object):
 
 
     def init_db(self):
-        self.conn = db.connect('posts.db')
+        self.conn = db.connect(os.path.join(dirname, 'posts.db'))
         self.conn.row_factory = db.Row
 
         self.c = self.conn.cursor()
